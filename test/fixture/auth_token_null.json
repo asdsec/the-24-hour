@@ -1,0 +1,6 @@
+{
+	"kind": "test kind",
+	"email": "test email",
+	"refreshToken": "test refreshToken",
+	"expiresIn": "3600"
+}
