@@ -43,13 +43,13 @@ void main() {
       'should perform a POST request on a URL with email and password being the endpoint and with application/json header',
       () async {
         // arrange
-        when(mockClient.post(tUrl, headers: HttpHeader.header, body: tBody)).thenAnswer(
+        when(mockClient.post(tUrl, headers: HttpHeader.header, body: json.encode(tBody))).thenAnswer(
           (_) async => http.Response(fixture('auth_token.json'), 200),
         );
         // act
         await sut.requestLoginWithEmailAndPassword(email: tEmail, password: tPassword);
         // assert
-        verify(mockClient.post(tUrl, headers: HttpHeader.header, body: tBody)).called(1);
+        verify(mockClient.post(tUrl, headers: HttpHeader.header, body: json.encode(tBody))).called(1);
       },
     );
 
@@ -57,7 +57,7 @@ void main() {
       'should return AuthTokenModel when the response code is (success)',
       () async {
         // arrange
-        when(mockClient.post(tUrl, headers: HttpHeader.header, body: tBody)).thenAnswer(
+        when(mockClient.post(tUrl, headers: HttpHeader.header, body: json.encode(tBody))).thenAnswer(
           (_) async => http.Response(fixture('auth_token.json'), 200),
         );
         // act
@@ -74,7 +74,7 @@ void main() {
       'should throw a ServerException when the response is 404 or other',
       () async {
         // arrange
-        when(mockClient.post(tUrl, headers: HttpHeader.header, body: tBody)).thenAnswer(
+        when(mockClient.post(tUrl, headers: HttpHeader.header, body: json.encode(tBody))).thenAnswer(
           (_) async => http.Response('Something went wrong', 404),
         );
         // act

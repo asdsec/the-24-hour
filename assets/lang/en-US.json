@@ -1,6 +1,17 @@
 {
 	"appName": "24 hour",
 	"button": {
+		"login": "Log in",
+		"signUp": "Sign up",
+		"forgotPassword": "Forgot password?",
 		"manage": "Manage"
+	},
+	"textField": {
+		"email": "Email Address",
+		"password": "Password"
+	},
+	"loginView": {
+		"title": "Welcome Back",
+		"or": "or"
 	}
 }

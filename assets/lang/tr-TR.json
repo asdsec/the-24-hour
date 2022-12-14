@@ -1,0 +1,17 @@
+{
+	"appName": "24 saat",
+	"button": {
+		"login": "Giriş yap",
+		"signUp": "Kayıt ol",
+		"forgotPassword": "Şifremi unuttum?",
+		"manage": "Yönet"
+	},
+	"textField": {
+		"email": "E-Posta adresi",
+		"password": "Şifre"
+	},
+	"loginView": {
+		"title": "Tekrar Hoşgeldiniz",
+		"or": "ya da"
+	}
+}

@@ -41,7 +41,11 @@ class AuthTokenRemoteDataSourceImpl implements AuthTokenRemoteDataSource {
       'returnSecureToken': true,
     };
 
-    final response = await client.post(url, headers: HttpHeader.header, body: body);
+    final response = await client.post(
+      url,
+      headers: HttpHeader.header,
+      body: json.encode(body),
+    );
 
     if (response.statusCode == HttpStatus.ok) {
       return AuthTokenModel.fromJson(
