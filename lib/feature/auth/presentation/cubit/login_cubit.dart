@@ -22,4 +22,6 @@ class LoginCubit extends Cubit<LoginState> {
       (data) => emit(state.copyWith(status: LoginStatus.completed)),
     );
   }
+
+  void clearState() => emit(const LoginState.initial());
 }

@@ -33,8 +33,8 @@ void main() {
       'returnSecureToken': true,
     };
     final tUrlBase = NetworkUrls.auth.url;
-    final tPath = NetworkPaths.signUp.rawValue;
-    final tUrl = Uri.parse(tUrlBase + tPath);
+    final tPath = NetworkPaths.signInWithPassword.rawValue;
+    final tUrl = Uri.parse(tUrlBase + tPath + HttpHeader.queryParam);
     final tAuthTokenModel = AuthTokenModel.fromJson(
       json.decode(fixture('auth_token.json')) as Map<String, dynamic>,
     );

@@ -1,4 +1,5 @@
 enum NetworkPaths {
+  signInWithPassword(_accounts),
   signUp(_accounts);
 
   const NetworkPaths(this._prePath);

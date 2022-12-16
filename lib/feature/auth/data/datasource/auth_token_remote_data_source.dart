@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:the_24_hour/feature/auth/data/model/auth_token_model.dart';
 import 'package:the_24_hour/product/constant/header.dart';
@@ -34,7 +35,7 @@ class AuthTokenRemoteDataSourceImpl implements AuthTokenRemoteDataSource {
     required String email,
     required String password,
   }) async {
-    final url = Uri.parse(NetworkUrls.auth.url + NetworkPaths.signUp.rawValue);
+    final url = Uri.parse(NetworkUrls.auth.url + NetworkPaths.signInWithPassword.rawValue + HttpHeader.queryParam);
     final body = {
       'email': email,
       'password': password,
@@ -46,6 +47,8 @@ class AuthTokenRemoteDataSourceImpl implements AuthTokenRemoteDataSource {
       headers: HttpHeader.header,
       body: json.encode(body),
     );
+
+    debugPrint(response.body);
 
     if (response.statusCode == HttpStatus.ok) {
       return AuthTokenModel.fromJson(

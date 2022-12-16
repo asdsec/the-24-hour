@@ -9,6 +9,8 @@ import 'package:the_24_hour/product/extension/context_extensions.dart';
 import 'package:the_24_hour/product/init/common/page_padding.dart';
 import 'package:the_24_hour/product/init/common/page_sized_box.dart';
 import 'package:the_24_hour/product/init/language/locale_keys.g.dart';
+import 'package:the_24_hour/product/init/mixin/form_validator_mixin.dart';
+import 'package:the_24_hour/product/widgets/form_field/auth_text_form_field.dart';
 import 'package:the_24_hour/product/widgets/loading/loading_widget.dart';
 
 part '../widgets/login_form.dart';
@@ -53,10 +55,10 @@ class _LoginViewState extends State<LoginView> {
     BuildContext context,
     LoginState state,
   ) async {
-    state.status == LoginStatus.loading ? buildLoadingWidget() : dismissLoadingWidget();
+    state.status == LoginStatus.loading ? buildLoadingWidget(context) : dismissLoadingWidget();
   }
 
-  Future<void> buildLoadingWidget() async {
+  Future<void> buildLoadingWidget(BuildContext context) async {
     await showDialog<void>(
       context: context,
       barrierDismissible: false,

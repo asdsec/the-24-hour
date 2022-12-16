@@ -13,27 +13,23 @@ class _LoginForm extends StatelessWidget {
       key: formKey,
       child: Column(
         children: [
-          TextFormField(
+          AuthTextFormField(
             controller: _emailController,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.email_outlined),
-            ),
+            type: AuthTextFormType.email,
           ),
           const PageSizedBox.withNormalHeight(),
-          TextFormField(
+          AuthTextFormField(
             controller: _passwordController,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.password_outlined),
-            ),
+            type: AuthTextFormType.password,
           ),
+          const PageSizedBox.withNormalHeight(),
+          buildForgotPasswordButton(),
           const PageSizedBox.withNormalHeight(),
           buildErrorContainerIfNeeded(),
           const PageSizedBox.withNormalHeight(),
-          ElevatedButton(
-            key: const Key('login-button'),
-            onPressed: () => loginWithEmailAndPasswordIfFormValid(context),
-            child: Center(child: Text(LocaleKeys.button_login.tr())),
-          ),
+          buildLoginButton(context),
+          const PageSizedBox.withNormalHeight(),
+          buildSignUpButton(),
         ],
       ),
     );
@@ -52,7 +48,28 @@ class _LoginForm extends StatelessWidget {
     );
   }
 
+  Tooltip buildForgotPasswordButton() {
+    return Tooltip(
+      message: LocaleKeys.button_forgotPassword.tr(),
+      child: TextButton(
+        onPressed: () {},
+        child: Center(child: Text(LocaleKeys.button_forgotPassword.tr())),
+      ),
+    );
+  }
+
+  Tooltip buildLoginButton(BuildContext context) {
+    return Tooltip(
+      message: LocaleKeys.button_login.tr(),
+      child: ElevatedButton(
+        onPressed: () => loginWithEmailAndPasswordIfFormValid(context),
+        child: Center(child: Text(LocaleKeys.button_login.tr())),
+      ),
+    );
+  }
+
   Future<void> loginWithEmailAndPasswordIfFormValid(BuildContext context) async {
+    context.read<LoginCubit>().clearState();
     if (isFormsValid()) {
       await context.read<LoginCubit>().loginWithEmailAndPassword(
             AuthorizationParams(
@@ -64,4 +81,15 @@ class _LoginForm extends StatelessWidget {
   }
 
   bool isFormsValid() => formKey.currentState?.validate() ?? false;
+
+  Tooltip buildSignUpButton() {
+    return Tooltip(
+      message: LocaleKeys.button_signUp.tr(),
+      child: ElevatedButton(
+        // TODO(sametdmr): write signIn button onPressed func
+        onPressed: () {},
+        child: Center(child: Text(LocaleKeys.button_signUp.tr())),
+      ),
+    );
+  }
 }
