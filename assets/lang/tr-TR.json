@@ -10,6 +10,21 @@
 		"email": "E-Posta adresi",
 		"password": "Şifre"
 	},
+	"errors": {
+		"network": {
+			"invalidEmailOrPassword": "Geçersiz e-posta veya şifre!",
+			"serverFailure": "Sunucu Hasası!"
+		},
+		"cache": {
+			"cacheFailure": "Depolama hatası!"
+		},
+		"formValidation": {
+			"invalidEmail": "Geçersiz e-posta!",
+			"nullEmail": "e-posta boş bırakılamaz!",
+			"nullPassword": "Şifre boş bırakılamaz!",
+			"shortPassword": "Şifre en az 6 karakter içermeli!"
+		}
+	},
 	"loginView": {
 		"title": "Tekrar Hoşgeldiniz",
 		"or": "ya da"

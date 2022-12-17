@@ -3,12 +3,14 @@ import 'package:flutter/foundation.dart';
 
 @immutable
 class Failure extends Equatable {
+  const Failure();
+
   @override
   List<Object?> get props => [];
 }
 
 @immutable
-class ServerFailure implements Failure {
+class ServerFailure extends Failure {
   const ServerFailure();
 
   @override
@@ -19,7 +21,20 @@ class ServerFailure implements Failure {
 }
 
 @immutable
-class CacheFailure implements Failure {
+class LoginFailure extends Failure {
+  const LoginFailure(this.message);
+
+  final String message;
+
+  @override
+  List<Object?> get props => [message];
+
+  @override
+  bool? get stringify => null;
+}
+
+@immutable
+class CacheFailure extends Failure {
   const CacheFailure();
 
   @override

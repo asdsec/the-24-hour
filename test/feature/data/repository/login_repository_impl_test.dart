@@ -74,9 +74,7 @@ void main() {
             email: tEmail,
             password: tPassword,
           ),
-        ).thenAnswer(
-          (_) async => tAuthTokenModel,
-        );
+        ).thenAnswer((_) async => tAuthTokenModel);
         // act
         await sut.loginWithEmailAndPassword(email: tEmail, password: tPassword);
         // assert
@@ -88,6 +86,30 @@ void main() {
         ).called(1);
         verify(mockLocalDataSource.cacheAuthToken(tAuthTokenModel)).called(1);
         verifyNoMoreInteractions(mockLocalDataSource);
+      },
+    );
+
+    test(
+      'should return login failure when the call to remote data source is unsuccessful at logging in',
+      () async {
+        // arrange
+        when(
+          mockRemoteDataSource.requestLoginWithEmailAndPassword(
+            email: tEmail,
+            password: tPassword,
+          ),
+        ).thenThrow(const LoginException('INVALID_PASSWORD'));
+        // act
+        final result = await sut.loginWithEmailAndPassword(email: tEmail, password: tPassword);
+        // assert
+        verify(
+          mockRemoteDataSource.requestLoginWithEmailAndPassword(
+            email: tEmail,
+            password: tPassword,
+          ),
+        ).called(1);
+        verifyNoMoreInteractions(mockRemoteDataSource);
+        expect(result, equals(const Left<Failure, void>(LoginFailure('INVALID_PASSWORD'))));
       },
     );
 

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +10,7 @@ import 'package:the_24_hour/product/extension/context_extensions.dart';
 import 'package:the_24_hour/product/init/common/page_padding.dart';
 import 'package:the_24_hour/product/init/common/page_sized_box.dart';
 import 'package:the_24_hour/product/init/language/locale_keys.g.dart';
-import 'package:the_24_hour/product/init/mixin/form_validator_mixin.dart';
+import 'package:the_24_hour/product/navigation/app_router.dart';
 import 'package:the_24_hour/product/widgets/form_field/auth_text_form_field.dart';
 import 'package:the_24_hour/product/widgets/loading/loading_widget.dart';
 
@@ -23,7 +24,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final loadingWidgetKey = GlobalKey(debugLabel: 'loadingIndicator');
+  final loadingWidgetKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class _LoginViewState extends State<LoginView> {
           padding: const PagePadding(),
           child: SingleChildScrollView(
             child: BlocListener<LoginCubit, LoginState>(
-              listener: buildLoadingWidgetWhenNeeded,
+              listener: listener,
               child: _LoginForm(),
             ),
           ),
@@ -51,11 +52,23 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
+  Future<void> listener(BuildContext context, LoginState state) async {
+    await buildLoadingWidgetWhenNeeded(context, state);
+    // ignore: use_build_context_synchronously
+    await navigateToHome(context, state);
+  }
+
   Future<void> buildLoadingWidgetWhenNeeded(
     BuildContext context,
     LoginState state,
   ) async {
     state.status == LoginStatus.loading ? buildLoadingWidget(context) : dismissLoadingWidget();
+  }
+
+  Future<void> navigateToHome(BuildContext context, LoginState state) async {
+    if (state.status == LoginStatus.completed) {
+      await context.router.replace(const DummyLoggedInRoute());
+    }
   }
 
   Future<void> buildLoadingWidget(BuildContext context) async {

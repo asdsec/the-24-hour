@@ -1,8 +1,21 @@
+// Network
+
+import 'package:flutter/foundation.dart';
+
 class ServerException implements Exception {}
 
 class ServerFromJsonException implements Exception {}
 
 class NullFieldServerException implements Exception {}
+
+@immutable
+class LoginException implements Exception {
+  const LoginException(this.errorMessage);
+
+  final String errorMessage;
+}
+
+// Cache
 
 class ClosedBoxException implements Exception {}
 

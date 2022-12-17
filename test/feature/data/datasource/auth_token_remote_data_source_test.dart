@@ -71,11 +71,45 @@ void main() {
     );
 
     test(
-      'should throw a ServerException when the response is 404 or other',
+      'should throw a LoginException when the response has the error of EMAIL_NOT_FOUND',
       () async {
         // arrange
         when(mockClient.post(tUrl, headers: HttpHeader.header, body: json.encode(tBody))).thenAnswer(
-          (_) async => http.Response('Something went wrong', 404),
+          (_) async => http.Response(fixture('auth_email_not_found_error.json'), 400),
+        );
+        // act
+        final call = sut.requestLoginWithEmailAndPassword;
+        // assert
+        expect(
+          () => call(email: tEmail, password: tPassword),
+          throwsA(const TypeMatcher<LoginException>()),
+        );
+      },
+    );
+
+    test(
+      'should throw a LoginException when the response has the error of INVALID_PASSWORD',
+      () async {
+        // arrange
+        when(mockClient.post(tUrl, headers: HttpHeader.header, body: json.encode(tBody))).thenAnswer(
+          (_) async => http.Response(fixture('auth_invalid_password_error.json'), 400),
+        );
+        // act
+        final call = sut.requestLoginWithEmailAndPassword;
+        // assert
+        expect(
+          () => call(email: tEmail, password: tPassword),
+          throwsA(const TypeMatcher<LoginException>()),
+        );
+      },
+    );
+
+    test(
+      'should throw a ServerException when any error occurred except EMAIL_NOT_FOUND, INVALID_PASSWORD',
+      () async {
+        // arrange
+        when(mockClient.post(tUrl, headers: HttpHeader.header, body: json.encode(tBody))).thenAnswer(
+          (_) async => http.Response('{"error":"Something went wrong!"}', 404),
         );
         // act
         final call = sut.requestLoginWithEmailAndPassword;

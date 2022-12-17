@@ -10,6 +10,21 @@
 		"email": "Email Address",
 		"password": "Password"
 	},
+	"errors": {
+		"network": {
+			"invalidEmailOrPassword": "Invalid email or password!",
+			"serverFailure": "Server Failure"
+		},
+		"cache": {
+			"cacheFailure": "Cache Failure"
+		},
+		"formValidation": {
+			"invalidEmail": "Invalid email!",
+			"nullEmail": "Email cannot be null!",
+			"nullPassword": "Password cannot be null!",
+			"shortPassword": "Password should include at least 6 characters!"
+		}
+	},
 	"loginView": {
 		"title": "Welcome Back",
 		"or": "or"

@@ -28,6 +28,8 @@ class LoginRepositoryImpl implements LoginRepository {
       );
       await localDataSource.cacheAuthToken(authTokenModel);
       return const Right(null);
+    } on LoginException catch (error) {
+      return Left(LoginFailure(error.errorMessage));
     } on ServerException {
       return const Left(ServerFailure());
     }

@@ -1,5 +1,6 @@
 // ignore_for_file: unawaited_futures
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:either/either.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -9,6 +10,7 @@ import 'package:the_24_hour/feature/auth/domain/usecase/params.dart';
 import 'package:the_24_hour/feature/auth/presentation/cubit/login_cubit.dart';
 import 'package:the_24_hour/feature/auth/presentation/cubit/login_state.dart';
 import 'package:the_24_hour/product/error/failure.dart';
+import 'package:the_24_hour/product/init/language/locale_keys.g.dart';
 
 @GenerateNiceMocks([MockSpec<LoginWithEmailAndPassword>()])
 import 'login_cubit_test.mocks.dart';
@@ -76,9 +78,27 @@ void main() {
           (_) async => const Left(ServerFailure()),
         );
         // assert later
-        const expectedOrder = [
-          LoginState(status: LoginStatus.loading),
-          LoginState(status: LoginStatus.error, errorMessage: SERVER_FAILURE_MESSAGE),
+        final expectedOrder = [
+          const LoginState(status: LoginStatus.loading),
+          LoginState(status: LoginStatus.error, errorMessage: LocaleKeys.errors_network_serverFailure.tr()),
+        ];
+        expectLater(sut.stream, emitsInOrder(expectedOrder));
+        // act
+        await sut.loginWithEmailAndPassword(tAuthParams);
+      },
+    );
+
+    test(
+      'should emit LoginState with LoginStatus.loading and LoginStatus.error when use case fails with login error',
+      () async {
+        // arrange
+        when(mockLoginWithEmailAndPassword.run(tAuthParams)).thenAnswer(
+          (_) async => Left(LoginFailure(LocaleKeys.errors_network_invalidEmailOrPassword.tr())),
+        );
+        // assert later
+        final expectedOrder = [
+          const LoginState(status: LoginStatus.loading),
+          LoginState(status: LoginStatus.error, errorMessage: LocaleKeys.errors_network_invalidEmailOrPassword.tr()),
         ];
         expectLater(sut.stream, emitsInOrder(expectedOrder));
         // act

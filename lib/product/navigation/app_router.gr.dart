@@ -22,7 +22,13 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: const LoginView(),
       );
-    }
+    },
+    DummyLoggedInRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const DummyLoggedInView(),
+      );
+    },
   };
 
   @override
@@ -30,7 +36,11 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           LoginRoute.name,
           path: '/',
-        )
+        ),
+        RouteConfig(
+          DummyLoggedInRoute.name,
+          path: '/dummy-logged-in-view',
+        ),
       ];
 }
 
@@ -44,4 +54,16 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+}
+
+/// generated route for
+/// [DummyLoggedInView]
+class DummyLoggedInRoute extends PageRouteInfo<void> {
+  const DummyLoggedInRoute()
+      : super(
+          DummyLoggedInRoute.name,
+          path: '/dummy-logged-in-view',
+        );
+
+  static const String name = 'DummyLoggedInRoute';
 }
