@@ -1,3 +1,5 @@
+import 'package:the_24_hour/env.dart';
+
 class HttpHeader {
   const HttpHeader._();
 
@@ -5,5 +7,5 @@ class HttpHeader {
     'content-type': 'application/json',
   };
 
-  static const queryParam = '?key=AIzaSyCHa6X_X_DA2hEeEWl0_aq5a0XV2e40S8U';
+  static final queryParam = '?key=${Env.firebaseSecretKey}';
 }

@@ -22,3 +22,7 @@ class ClosedBoxException implements Exception {}
 class NullBoxModelException implements Exception {}
 
 class UnregisteredHiveAdapterException implements Exception {}
+
+// Core
+
+class UninitiatedEnvironmentVariable implements Exception {}

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:the_24_hour/env.dart';
 import 'package:the_24_hour/injection.dart';
 import 'package:the_24_hour/product/enum/languages.dart';
 import 'package:the_24_hour/product/init/language/locale_keys.g.dart';
@@ -8,6 +9,8 @@ import 'package:the_24_hour/product/navigation/app_router.dart';
 Future<void> main() async {
   final supportedLocales = [Languages.tr.locale, Languages.en.locale];
   const langPath = 'assets/lang';
+
+  await Env.initiate();
 
   await setup();
 

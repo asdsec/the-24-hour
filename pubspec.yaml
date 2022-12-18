@@ -17,6 +17,7 @@ dependencies:
 
   # core
   equatable: ^2.0.5
+  flutter_dotenv: ^5.0.2
 
   # cache
   hive: ^2.2.3
@@ -64,3 +65,5 @@ flutter:
 
   assets:
     - assets/lang/
+    - .env.development
+    - .env.production
