@@ -29,7 +29,7 @@ class _LoginForm extends StatelessWidget {
           const PageSizedBox.withNormalHeight(),
           buildLoginButton(context),
           const PageSizedBox.withNormalHeight(),
-          buildSignUpButton(),
+          buildSignUpButton(context),
         ],
       ),
     );
@@ -85,12 +85,11 @@ class _LoginForm extends StatelessWidget {
 
   bool isFormsValid() => formKey.currentState?.validate() ?? false;
 
-  Tooltip buildSignUpButton() {
+  Tooltip buildSignUpButton(BuildContext context) {
     return Tooltip(
       message: LocaleKeys.button_signUp.tr(),
       child: OutlinedButton(
-        // TODO(sametdmr): write signIn button onPressed func
-        onPressed: () {},
+        onPressed: () => context.router.navigate(const SignUpRoute()),
         child: Center(child: Text(LocaleKeys.button_signUp.tr())),
       ),
     );

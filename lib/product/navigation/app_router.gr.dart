@@ -23,6 +23,12 @@ class _$AppRouter extends RootStackRouter {
         child: const LoginView(),
       );
     },
+    SignUpRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const SignUpView(),
+      );
+    },
     DummyLoggedInRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -36,6 +42,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           LoginRoute.name,
           path: '/',
+        ),
+        RouteConfig(
+          SignUpRoute.name,
+          path: '/sign-up-view',
         ),
         RouteConfig(
           DummyLoggedInRoute.name,
@@ -54,6 +64,18 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+}
+
+/// generated route for
+/// [SignUpView]
+class SignUpRoute extends PageRouteInfo<void> {
+  const SignUpRoute()
+      : super(
+          SignUpRoute.name,
+          path: '/sign-up-view',
+        );
+
+  static const String name = 'SignUpRoute';
 }
 
 /// generated route for
