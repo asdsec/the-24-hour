@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:the_24_hour/env.dart';
 import 'package:the_24_hour/injection.dart';
 import 'package:the_24_hour/product/enum/languages.dart';
+import 'package:the_24_hour/product/init/common/page_padding.dart';
 import 'package:the_24_hour/product/init/language/locale_keys.g.dart';
 import 'package:the_24_hour/product/navigation/app_router.dart';
 
@@ -35,9 +36,38 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData.dark().copyWith(
-        inputDecorationTheme: const InputDecorationTheme(
-          border: OutlineInputBorder(),
+        colorScheme: const ColorScheme.dark().copyWith(
+          primary: Colors.lime.withOpacity(.7),
+          onPrimary: Colors.white.withOpacity(.8),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           isDense: true,
+          contentPadding: const WidgetPadding.formField(),
+          hintStyle: Theme.of(context).textTheme.subtitle2?.copyWith(
+                color: Theme.of(context).colorScheme.onPrimary.withOpacity(.5),
+              ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const WidgetPadding.button(),
+            shape: const StadiumBorder(),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            padding: const WidgetPadding.button(),
+            shape: StadiumBorder(
+              side: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
+            ),
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            shape: const StadiumBorder(),
+          ),
         ),
       ),
       title: LocaleKeys.appName.tr(),

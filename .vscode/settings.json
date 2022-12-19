@@ -1,3 +1,4 @@
 {
-	"cSpell.words": ["dartz", "dotenv", "endtemplate"]
+	"cSpell.words": ["dartz", "dotenv", "endtemplate"],
+	"dotenv.enableAutocloaking": true
 }

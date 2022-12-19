@@ -79,24 +79,40 @@ class MockAuthTokenRemoteDataSource extends _i1.Mock
         )),
       ) as _i4.Future<_i2.AuthTokenModel>);
   @override
-  _i4.Future<_i2.AuthTokenModel> requestLoginViaGoogle() => (super.noSuchMethod(
+  _i4.Future<_i2.AuthTokenModel> signUp({
+    required String? email,
+    required String? password,
+  }) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #requestLoginViaGoogle,
+          #signUp,
           [],
+          {
+            #email: email,
+            #password: password,
+          },
         ),
         returnValue: _i4.Future<_i2.AuthTokenModel>.value(_FakeAuthTokenModel_0(
           this,
           Invocation.method(
-            #requestLoginViaGoogle,
+            #signUp,
             [],
+            {
+              #email: email,
+              #password: password,
+            },
           ),
         )),
         returnValueForMissingStub:
             _i4.Future<_i2.AuthTokenModel>.value(_FakeAuthTokenModel_0(
           this,
           Invocation.method(
-            #requestLoginViaGoogle,
+            #signUp,
             [],
+            {
+              #email: email,
+              #password: password,
+            },
           ),
         )),
       ) as _i4.Future<_i2.AuthTokenModel>);

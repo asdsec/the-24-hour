@@ -5,13 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_24_hour/feature/auth/domain/usecase/params.dart';
 import 'package:the_24_hour/feature/auth/presentation/cubit/login_cubit.dart';
 import 'package:the_24_hour/feature/auth/presentation/cubit/login_state.dart';
+import 'package:the_24_hour/feature/auth/presentation/widgets/auth_text_form_field.dart';
 import 'package:the_24_hour/injection.dart';
 import 'package:the_24_hour/product/extension/context_extensions.dart';
 import 'package:the_24_hour/product/init/common/page_padding.dart';
 import 'package:the_24_hour/product/init/common/page_sized_box.dart';
 import 'package:the_24_hour/product/init/language/locale_keys.g.dart';
 import 'package:the_24_hour/product/navigation/app_router.dart';
-import 'package:the_24_hour/product/widgets/form_field/auth_text_form_field.dart';
 import 'package:the_24_hour/product/widgets/loading/loading_widget.dart';
 
 part '../widgets/login_form.dart';

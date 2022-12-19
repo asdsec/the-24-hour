@@ -48,12 +48,15 @@ class _LoginForm extends StatelessWidget {
     );
   }
 
-  Tooltip buildForgotPasswordButton() {
-    return Tooltip(
-      message: LocaleKeys.button_forgotPassword.tr(),
-      child: TextButton(
-        onPressed: () {},
-        child: Center(child: Text(LocaleKeys.button_forgotPassword.tr())),
+  Widget buildForgotPasswordButton() {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Tooltip(
+        message: LocaleKeys.button_forgotPassword.tr(),
+        child: TextButton(
+          onPressed: () {},
+          child: Text(LocaleKeys.button_forgotPassword.tr()),
+        ),
       ),
     );
   }
@@ -85,7 +88,7 @@ class _LoginForm extends StatelessWidget {
   Tooltip buildSignUpButton() {
     return Tooltip(
       message: LocaleKeys.button_signUp.tr(),
-      child: ElevatedButton(
+      child: OutlinedButton(
         // TODO(sametdmr): write signIn button onPressed func
         onPressed: () {},
         child: Center(child: Text(LocaleKeys.button_signUp.tr())),

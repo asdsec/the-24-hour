@@ -4,6 +4,6 @@ class HiveConstants {
   static const fileName = 'database';
 
   // auth token
-  static const String authTokenModelKey = '';
+  static const authTokenModelKey = 'auth_token';
   static const int authTokenModelTypeId = 0;
 }

@@ -18,7 +18,10 @@ abstract class AuthTokenRemoteDataSource {
   });
 
   /// Throws a `ServerException` fro all error codes.
-  Future<AuthTokenModel> requestLoginViaGoogle();
+  Future<AuthTokenModel> signUp({
+    required String email,
+    required String password,
+  });
 }
 
 class AuthTokenRemoteDataSourceImpl implements AuthTokenRemoteDataSource {
@@ -27,8 +30,44 @@ class AuthTokenRemoteDataSourceImpl implements AuthTokenRemoteDataSource {
   final http.Client client;
 
   @override
-  Future<AuthTokenModel> requestLoginViaGoogle() {
-    throw UnimplementedError();
+  Future<AuthTokenModel> signUp({
+    required String email,
+    required String password,
+  }) async {
+    final url = Uri.parse(
+      NetworkUrls.auth.url + NetworkPaths.signUp.rawValue + HttpHeader.queryParam,
+    );
+    final body = {
+      'email': email,
+      'password': password,
+      'returnSecureToken': true,
+    };
+
+    try {
+      final response = await client.post(
+        url,
+        headers: HttpHeader.header,
+        body: json.encode(body),
+      );
+
+      debugPrint(response.body);
+
+      final data = tryDecode(response.body);
+
+      if (data != null) {
+        if (response.statusCode >= HttpStatus.ok && response.statusCode <= HttpStatus.multipleChoices) {
+          return AuthTokenModel.fromJson(data);
+        } else {
+          FirebaseErrorModel.fromJson(data).throwSignInException();
+        }
+      }
+
+      throw ServerException();
+    } on SignUpException {
+      rethrow;
+    } catch (e) {
+      throw ServerException();
+    }
   }
 
   @override

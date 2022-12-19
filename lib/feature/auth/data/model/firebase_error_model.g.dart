@@ -29,6 +29,10 @@ Map<String, dynamic> _$ErrorToJson(Error instance) => <String, dynamic>{
     };
 
 const _$FirebaseErrorsEnumMap = {
+  FirebaseErrors.tooManyAttemptsTryLater: 'TOO_MANY_ATTEMPTS_TRY_LATER',
+  FirebaseErrors.operationNotAllowed: 'OPERATION_NOT_ALLOWED',
+  FirebaseErrors.emailExists: 'EMAIL_EXISTS',
+  FirebaseErrors.userDisabled: 'USER_DISABLED',
   FirebaseErrors.invalidPassword: 'INVALID_PASSWORD',
   FirebaseErrors.emailNotFound: 'EMAIL_NOT_FOUND',
 };

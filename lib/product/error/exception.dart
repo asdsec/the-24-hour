@@ -15,6 +15,13 @@ class LoginException implements Exception {
   final String errorMessage;
 }
 
+@immutable
+class SignUpException implements Exception {
+  const SignUpException(this.errorMessage);
+
+  final String errorMessage;
+}
+
 // Cache
 
 class ClosedBoxException implements Exception {}

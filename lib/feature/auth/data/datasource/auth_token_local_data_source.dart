@@ -4,7 +4,7 @@ import 'package:the_24_hour/product/constant/hive_constants.dart';
 import 'package:the_24_hour/product/error/exception.dart';
 
 abstract class AuthTokenLocalDataSource {
-  /// GEts the cached `AuthTokenModel`.
+  /// Gets the cached `AuthTokenModel`.
   ///
   /// Throws `NullBoxModelException` if the key does not exist.
   Future<AuthTokenModel> getAuthToken();
