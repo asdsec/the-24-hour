@@ -34,6 +34,19 @@ class LoginFailure extends Failure {
 }
 
 @immutable
+class SignUpFailure extends Failure {
+  const SignUpFailure(this.message);
+
+  final String message;
+
+  @override
+  List<Object?> get props => [message];
+
+  @override
+  bool? get stringify => null;
+}
+
+@immutable
 class CacheFailure extends Failure {
   const CacheFailure();
 

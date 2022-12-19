@@ -34,7 +34,7 @@ class FirebaseErrorModel extends Equatable {
   }
 
   /// Throws `SignInException` if error is LoginError
-  void throwSignInException() {
+  void throwSignUpException() {
     if (error?.message?.isSignUpError() ?? false) {
       throw SignUpException(error!.message!.message);
     }

@@ -18,7 +18,7 @@ abstract class AuthTokenRemoteDataSource {
   });
 
   /// Throws a `ServerException` fro all error codes.
-  Future<AuthTokenModel> signUp({
+  Future<AuthTokenModel> requestSignUp({
     required String email,
     required String password,
   });
@@ -30,7 +30,7 @@ class AuthTokenRemoteDataSourceImpl implements AuthTokenRemoteDataSource {
   final http.Client client;
 
   @override
-  Future<AuthTokenModel> signUp({
+  Future<AuthTokenModel> requestSignUp({
     required String email,
     required String password,
   }) async {
@@ -58,7 +58,7 @@ class AuthTokenRemoteDataSourceImpl implements AuthTokenRemoteDataSource {
         if (response.statusCode >= HttpStatus.ok && response.statusCode <= HttpStatus.multipleChoices) {
           return AuthTokenModel.fromJson(data);
         } else {
-          FirebaseErrorModel.fromJson(data).throwSignInException();
+          FirebaseErrorModel.fromJson(data).throwSignUpException();
         }
       }
 

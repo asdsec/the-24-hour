@@ -160,7 +160,7 @@ void main() {
           (_) async => http.Response(fixture('auth_token.json'), 200),
         );
         // act
-        await sut.signUp(email: tEmail, password: tPassword);
+        await sut.requestSignUp(email: tEmail, password: tPassword);
         // assert
         verify(mockClient.post(tUrl, headers: HttpHeader.header, body: json.encode(tBody))).called(1);
       },
@@ -176,7 +176,7 @@ void main() {
           (_) async => http.Response(fixture('auth_token.json'), 200),
         );
         // act
-        final result = await sut.signUp(email: tEmail, password: tPassword);
+        final result = await sut.requestSignUp(email: tEmail, password: tPassword);
         // assert
         expect(result, equals(tAuthTokenModel));
       },
@@ -192,7 +192,7 @@ void main() {
           (_) async => http.Response(fixture('auth_email_exists_error.json'), 400),
         );
         // act
-        final call = sut.signUp;
+        final call = sut.requestSignUp;
         // assert
         expect(
           () => call(email: tEmail, password: tPassword),
@@ -211,7 +211,7 @@ void main() {
           (_) async => http.Response('{"error":"Something went wrong!"}', 404),
         );
         // act
-        final call = sut.signUp;
+        final call = sut.requestSignUp;
         // assert
         expect(
           () => call(email: tEmail, password: tPassword),
