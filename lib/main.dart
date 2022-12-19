@@ -30,6 +30,7 @@ Future<void> main() async {
 class App extends StatelessWidget {
   App({super.key});
 
+  // TODO(sametdmr): wirte it in injection file
   final _appRouter = AppRouter();
 
   @override

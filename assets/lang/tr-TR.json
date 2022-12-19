@@ -13,7 +13,8 @@
 	"errors": {
 		"network": {
 			"invalidEmailOrPassword": "Geçersiz e-posta veya şifre!",
-			"serverFailure": "Sunucu Hasası!"
+			"serverFailure": "Sunucu Hasası!",
+			"emailExists": "E-posta zaten var"
 		},
 		"cache": {
 			"cacheFailure": "Depolama hatası!"

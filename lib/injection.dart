@@ -7,9 +7,13 @@ import 'package:the_24_hour/feature/auth/data/datasource/auth_token_local_data_s
 import 'package:the_24_hour/feature/auth/data/datasource/auth_token_remote_data_source.dart';
 import 'package:the_24_hour/feature/auth/data/model/auth_token_model.dart';
 import 'package:the_24_hour/feature/auth/data/repository/login_repository_impl.dart';
+import 'package:the_24_hour/feature/auth/data/repository/sign_up_repository_impl.dart';
 import 'package:the_24_hour/feature/auth/domain/repository/login_repository.dart';
+import 'package:the_24_hour/feature/auth/domain/repository/sign_up_repository.dart';
 import 'package:the_24_hour/feature/auth/domain/usecase/login_with_email_and_password.dart';
+import 'package:the_24_hour/feature/auth/domain/usecase/sign_up.dart';
 import 'package:the_24_hour/feature/auth/presentation/cubit/login_cubit.dart';
+import 'package:the_24_hour/feature/auth/presentation/cubit/sign_up_cubit.dart';
 import 'package:the_24_hour/product/constant/hive_constants.dart';
 
 final sl = GetIt.instance;
@@ -21,13 +25,25 @@ Future<void> setup() async {
   sl.registerFactory<LoginCubit>(
     () => LoginCubit(loginNormal: sl()),
   );
+  sl.registerFactory<SignUpCubit>(
+    () => SignUpCubit(signUp: sl()),
+  );
   // Use case
   sl.registerLazySingleton<LoginWithEmailAndPassword>(
     () => LoginWithEmailAndPassword(sl()),
   );
+  sl.registerLazySingleton<SignUp>(
+    () => SignUp(sl()),
+  );
   // Repository
   sl.registerLazySingleton<LoginRepository>(
     () => LoginRepositoryImpl(
+      localDataSource: sl(),
+      remoteDataSource: sl(),
+    ),
+  );
+  sl.registerLazySingleton<SignUpRepository>(
+    () => SignUpRepositoryImpl(
       localDataSource: sl(),
       remoteDataSource: sl(),
     ),

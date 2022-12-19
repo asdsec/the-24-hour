@@ -1,5 +1,3 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_24_hour/feature/auth/domain/usecase/login_with_email_and_password.dart';

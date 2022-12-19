@@ -12,6 +12,7 @@ abstract class  LocaleKeys {
   static const textField = 'textField';
   static const errors_network_invalidEmailOrPassword = 'errors.network.invalidEmailOrPassword';
   static const errors_network_serverFailure = 'errors.network.serverFailure';
+  static const errors_network_emailExists = 'errors.network.emailExists';
   static const errors_network = 'errors.network';
   static const errors_cache_cacheFailure = 'errors.cache.cacheFailure';
   static const errors_cache = 'errors.cache';

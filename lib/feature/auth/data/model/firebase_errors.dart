@@ -50,7 +50,7 @@ enum FirebaseErrors {
       case FirebaseErrors.operationNotAllowed:
       case FirebaseErrors.emailExists:
       case FirebaseErrors.userDisabled:
-        return 'email exists';
+        return LocaleKeys.errors_network_emailExists.tr();
     }
   }
 }

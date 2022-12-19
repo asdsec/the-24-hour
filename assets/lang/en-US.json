@@ -13,7 +13,8 @@
 	"errors": {
 		"network": {
 			"invalidEmailOrPassword": "Invalid email or password!",
-			"serverFailure": "Server Failure"
+			"serverFailure": "Server Failure",
+			"emailExists": "Email already exists"
 		},
 		"cache": {
 			"cacheFailure": "Cache Failure"
