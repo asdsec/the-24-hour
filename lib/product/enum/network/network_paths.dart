@@ -1,4 +1,5 @@
 enum NetworkPaths {
+  sendOobCode(_accounts),
   delete(_accounts),
   signInWithPassword(_accounts),
   signUp(_accounts);

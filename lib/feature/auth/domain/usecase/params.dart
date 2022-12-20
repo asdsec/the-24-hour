@@ -14,3 +14,13 @@ class AuthorizationParams extends Equatable {
   @override
   List<Object?> get props => [email, password];
 }
+
+@immutable
+class EmailParams extends Equatable {
+  const EmailParams(this.email);
+
+  final String email;
+
+  @override
+  List<Object?> get props => [email];
+}
