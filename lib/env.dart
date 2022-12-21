@@ -21,6 +21,6 @@ class Env {
 
   static String get _fileName {
     if (kReleaseMode) return '.env.production';
-    return '.env.development';
+    return '.env.dev';
   }
 }
