@@ -70,6 +70,11 @@ class App extends StatelessWidget {
             shape: const StadiumBorder(),
           ),
         ),
+        dialogTheme: DialogTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
       ),
       title: LocaleKeys.appName.tr(),
       debugShowCheckedModeBanner: false,

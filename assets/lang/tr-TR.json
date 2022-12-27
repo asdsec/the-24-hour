@@ -4,7 +4,8 @@
 		"login": "Giriş yap",
 		"signUp": "Kayıt ol",
 		"forgotPassword": "Şifremi unuttum?",
-		"manage": "Yönet"
+		"manage": "Yönet",
+		"sendResetPasswordEmail": "Sifre sıfırlama e-postası gönder"
 	},
 	"textField": {
 		"email": "E-Posta adresi",
@@ -29,5 +30,9 @@
 	"loginView": {
 		"title": "Tekrar Hoşgeldiniz",
 		"or": "ya da"
+	},
+	"resetPasswordView": {
+		"successDialogTitle": "İşlem Başarılı",
+		"successDialogContent": "Şifre sıfırlama e-postası başarıyla gönderildi. Şifresini sıfırlamak için e-posta kutunuzu kotrol edebilirsiniz."
 	}
 }

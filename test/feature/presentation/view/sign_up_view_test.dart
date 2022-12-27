@@ -33,6 +33,7 @@ void main() {
     await di.sl.reset();
   });
 
+
   Widget createLocalizedWidgetUnderTest() {
     final supportedLocales = [Languages.tr.locale, Languages.en.locale];
     const langPath = 'assets/lang';

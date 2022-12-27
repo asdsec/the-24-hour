@@ -15,7 +15,7 @@ void main() {
       'login with email and password',
       (tester) async {
         await app.main();
-        await tester.pumpAndSettle();
+        await tester.pumpAndSettle(); 
 
         final loginButtonFinder = find.byTooltip(LocaleKeys.button_login.tr());
         final emailTextFieldFinder = find.byTooltip(LocaleKeys.textField_email.tr());

@@ -4,7 +4,8 @@
 		"login": "Log in",
 		"signUp": "Sign up",
 		"forgotPassword": "Forgot password?",
-		"manage": "Manage"
+		"manage": "Manage",
+		"sendResetPasswordEmail": "Send reset password email"
 	},
 	"textField": {
 		"email": "Email Address",
@@ -29,5 +30,9 @@
 	"loginView": {
 		"title": "Welcome Back",
 		"or": "or"
+	},
+	"resetPasswordView": {
+		"successDialogTitle": "Process Succeeded",
+		"successDialogContent": "Reset Password Email sended successfully. You can check your mail box to reset password."
 	}
 }

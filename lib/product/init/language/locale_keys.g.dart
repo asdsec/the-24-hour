@@ -6,6 +6,7 @@ abstract class  LocaleKeys {
   static const button_signUp = 'button.signUp';
   static const button_forgotPassword = 'button.forgotPassword';
   static const button_manage = 'button.manage';
+  static const button_sendResetPasswordEmail = 'button.sendResetPasswordEmail';
   static const button = 'button';
   static const textField_email = 'textField.email';
   static const textField_password = 'textField.password';
@@ -25,5 +26,8 @@ abstract class  LocaleKeys {
   static const loginView_title = 'loginView.title';
   static const loginView_or = 'loginView.or';
   static const loginView = 'loginView';
+  static const resetPasswordView_successDialogTitle = 'resetPasswordView.successDialogTitle';
+  static const resetPasswordView_successDialogContent = 'resetPasswordView.successDialogContent';
+  static const resetPasswordView = 'resetPasswordView';
 
 }
