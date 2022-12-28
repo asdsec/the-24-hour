@@ -27,7 +27,7 @@ class _SignUpForm extends StatelessWidget {
           const PageSizedBox.withNormalHeight(),
           buildLoginButton(context),
           const PageSizedBox.withNormalHeight(),
-          buildSignUpButton(),
+          buildSignUpButton(context),
         ],
       ),
     );
@@ -70,11 +70,11 @@ class _SignUpForm extends StatelessWidget {
 
   bool isFormsValid() => formKey.currentState?.validate() ?? false;
 
-  Tooltip buildSignUpButton() {
+  Tooltip buildSignUpButton(BuildContext context) {
     return Tooltip(
       message: LocaleKeys.button_login.tr(),
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () => context.router.navigate(const LoginRoute()),
         child: Center(child: Text(LocaleKeys.button_login.tr())),
       ),
     );

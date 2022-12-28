@@ -23,7 +23,7 @@ class _LoginForm extends StatelessWidget {
             type: AuthTextFormType.password,
           ),
           const PageSizedBox.withNormalHeight(),
-          buildForgotPasswordButton(),
+          buildForgotPasswordButton(context),
           const PageSizedBox.withNormalHeight(),
           buildErrorContainerIfNeeded(),
           const PageSizedBox.withNormalHeight(),
@@ -48,13 +48,13 @@ class _LoginForm extends StatelessWidget {
     );
   }
 
-  Widget buildForgotPasswordButton() {
+  Widget buildForgotPasswordButton(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
       child: Tooltip(
         message: LocaleKeys.button_forgotPassword.tr(),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () => context.router.push(const ResetPasswordRoute()),
           child: Text(LocaleKeys.button_forgotPassword.tr()),
         ),
       ),

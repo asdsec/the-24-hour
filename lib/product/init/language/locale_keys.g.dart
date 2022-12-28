@@ -26,6 +26,7 @@ abstract class  LocaleKeys {
   static const loginView_title = 'loginView.title';
   static const loginView_or = 'loginView.or';
   static const loginView = 'loginView';
+  static const resetPasswordView_title = 'resetPasswordView.title';
   static const resetPasswordView_successDialogTitle = 'resetPasswordView.successDialogTitle';
   static const resetPasswordView_successDialogContent = 'resetPasswordView.successDialogContent';
   static const resetPasswordView = 'resetPasswordView';

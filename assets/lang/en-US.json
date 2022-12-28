@@ -32,6 +32,7 @@
 		"or": "or"
 	},
 	"resetPasswordView": {
+		"title": "Reset Password",
 		"successDialogTitle": "Process Succeeded",
 		"successDialogContent": "Reset Password Email sended successfully. You can check your mail box to reset password."
 	}

@@ -32,6 +32,7 @@
 		"or": "ya da"
 	},
 	"resetPasswordView": {
+		"title": "Şifre Sıfırlama",
 		"successDialogTitle": "İşlem Başarılı",
 		"successDialogContent": "Şifre sıfırlama e-postası başarıyla gönderildi. Şifresini sıfırlamak için e-posta kutunuzu kotrol edebilirsiniz."
 	}

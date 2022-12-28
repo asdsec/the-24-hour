@@ -10,6 +10,7 @@ import 'package:the_24_hour/product/extension/context_extensions.dart';
 import 'package:the_24_hour/product/init/common/page_padding.dart';
 import 'package:the_24_hour/product/init/common/page_sized_box.dart';
 import 'package:the_24_hour/product/init/language/locale_keys.g.dart';
+import 'package:the_24_hour/product/navigation/app_router.dart';
 import 'package:the_24_hour/product/widgets/dialog/generic_dialog.dart';
 import 'package:the_24_hour/product/widgets/loading/loading_widget.dart';
 
@@ -37,7 +38,10 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
 
   AppBar buildAppBar() {
     return AppBar(
+      title: Text(LocaleKeys.resetPasswordView_title.tr()),
       leading: IconButton(
+        // TODO(sametdmr): handle hard given splash radius
+        splashRadius: 20,
         onPressed: () => navigateBack(context),
         icon: const Icon(Icons.arrow_back_ios_outlined),
       ),
@@ -75,15 +79,25 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
       barrierDismissible: false,
       builder: (context) => GenericDialog(
         title: Center(child: Text(LocaleKeys.resetPasswordView_successDialogTitle.tr())),
-        content: Center(child: Text(LocaleKeys.resetPasswordView_successDialogContent.tr())),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(LocaleKeys.resetPasswordView_successDialogContent.tr()),
+          ],
+        ),
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () => navigateToLoginAndRemoveLast(context),
             child: Text(LocaleKeys.button_login.tr()),
           ),
         ],
       ),
     );
+  }
+
+  void navigateToLoginAndRemoveLast(BuildContext context) {
+    context.router.removeLast();
+    context.router.navigate(const LoginRoute());
   }
 
   Future<void> navigateBack(BuildContext context) async {
