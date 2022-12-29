@@ -28,12 +28,7 @@ class _ResetPasswordForm extends StatelessWidget {
   BlocBuilder<ResetPasswordCubit, ResetPasswordState> buildErrorContainerIfNeeded() {
     return BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
       builder: (context, state) {
-        return state.errorMessage != null
-            ? Container(
-                padding: const PagePadding(),
-                child: Text(state.errorMessage!),
-              )
-            : const SizedBox.shrink();
+        return state.errorMessage != null ? FormErrorContainer(error: state.errorMessage) : const SizedBox.shrink();
       },
     );
   }

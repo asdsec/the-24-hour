@@ -36,12 +36,7 @@ class _SignUpForm extends StatelessWidget {
   BlocBuilder<SignUpCubit, SignUpState> buildErrorContainerIfNeeded() {
     return BlocBuilder<SignUpCubit, SignUpState>(
       builder: (context, state) {
-        return state.errorMessage != null
-            ? Container(
-                padding: const PagePadding(),
-                child: Text(state.errorMessage!),
-              )
-            : const SizedBox.shrink();
+        return state.errorMessage != null ? FormErrorContainer(error: state.errorMessage) : const SizedBox.shrink();
       },
     );
   }

@@ -40,6 +40,7 @@ class App extends StatelessWidget {
         colorScheme: const ColorScheme.dark().copyWith(
           primary: Colors.lime.withOpacity(.7),
           onPrimary: Colors.white.withOpacity(.8),
+          error: const Color(0xffff453a),
         ),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(

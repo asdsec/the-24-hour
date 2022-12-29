@@ -7,4 +7,5 @@ class PagePadding extends EdgeInsets {
 class WidgetPadding extends EdgeInsets {
   const WidgetPadding.button() : super.symmetric(vertical: 12);
   const WidgetPadding.formField() : super.symmetric(vertical: 12);
+  const WidgetPadding.container() : super.all(12);
 }

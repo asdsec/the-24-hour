@@ -38,12 +38,7 @@ class _LoginForm extends StatelessWidget {
   BlocBuilder<LoginCubit, LoginState> buildErrorContainerIfNeeded() {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
-        return state.errorMessage != null
-            ? Container(
-                padding: const PagePadding(),
-                child: Text(state.errorMessage!),
-              )
-            : const SizedBox.shrink();
+        return state.errorMessage != null ? FormErrorContainer(error: state.errorMessage) : const SizedBox.shrink();
       },
     );
   }
