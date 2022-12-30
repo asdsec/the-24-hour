@@ -12,7 +12,7 @@ import 'package:the_24_hour/product/enum/network/network_paths.dart';
 import 'package:the_24_hour/product/enum/network/network_urls.dart';
 import 'package:the_24_hour/product/error/exception.dart';
 
-import '../../../fixture/fixture_reader.dart';
+import '../../../../fixture/fixture_reader.dart';
 @GenerateNiceMocks([MockSpec<http.Client>()])
 import 'auth_token_remote_data_source_test.mocks.dart';
 

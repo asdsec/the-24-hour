@@ -33,7 +33,6 @@ void main() {
     await di.sl.reset();
   });
 
-
   Widget createLocalizedWidgetUnderTest() {
     final supportedLocales = [Languages.tr.locale, Languages.en.locale];
     const langPath = 'assets/lang';
@@ -88,12 +87,16 @@ should include two TextFormField and one Elevated Button
       await tester.runAsync(() async {
         await EasyLocalization.ensureInitialized();
         await tester.pumpWidget(createLocalizedWidgetUnderTest());
-        await tester.idle();
         await tester.pump(Duration.zero);
-        await tester.enterText(find.byTooltip(LocaleKeys.textField_email.tr()), tValidEmail);
-        await tester.enterText(find.byTooltip(LocaleKeys.textField_password.tr()), tPassword);
+
+        final emailTextFieldFinder = find.byTooltip(LocaleKeys.textField_email.tr());
+        final passwordTextFieldFinder = find.byTooltip(LocaleKeys.textField_password.tr());
+        await tester.ensureVisible(emailTextFieldFinder);
+        await tester.ensureVisible(passwordTextFieldFinder);
+        await tester.enterText(emailTextFieldFinder, tValidEmail);
+        await tester.enterText(passwordTextFieldFinder, tPassword);
         // await tester.tap(find.byTooltip(LocaleKeys.button_login.tr()));
-        await tester.pump(Duration.zero);
+        // await tester.pump(Duration.zero);
         // TODO(sametdmr): temporary expectation handle it
         // expect(find.byType(LoadingIndicator), findsOneWidget);
         // await tester.pump(Duration.zero);
@@ -108,12 +111,19 @@ should include two TextFormField and one Elevated Button
       await tester.runAsync(() async {
         await EasyLocalization.ensureInitialized();
         await tester.pumpWidget(createLocalizedWidgetUnderTest());
-        await tester.idle();
         await tester.pump(Duration.zero);
-        await tester.enterText(find.byTooltip(LocaleKeys.textField_email.tr()), tInvalidEmail);
-        await tester.enterText(find.byTooltip(LocaleKeys.textField_password.tr()), tPassword);
-        await tester.tap(find.byTooltip(LocaleKeys.button_signUp.tr()));
+
+        final emailTextFieldFinder = find.byTooltip(LocaleKeys.textField_email.tr());
+        final passwordTextFieldFinder = find.byTooltip(LocaleKeys.textField_password.tr());
+        final signUpButtonFinder = find.byTooltip(LocaleKeys.button_signUp.tr());
+        await tester.ensureVisible(emailTextFieldFinder);
+        await tester.ensureVisible(passwordTextFieldFinder);
+        await tester.ensureVisible(signUpButtonFinder);
+        await tester.enterText(emailTextFieldFinder, tInvalidEmail);
+        await tester.enterText(passwordTextFieldFinder, tPassword);
+        await tester.tap(signUpButtonFinder);
         await tester.pump(Duration.zero);
+
         expect(find.text(LocaleKeys.errors_formValidation_invalidEmail.tr()), findsOneWidget);
       });
     },
@@ -125,10 +135,13 @@ should include two TextFormField and one Elevated Button
       await tester.runAsync(() async {
         await EasyLocalization.ensureInitialized();
         await tester.pumpWidget(createLocalizedWidgetUnderTest());
-        await tester.idle();
         await tester.pump(Duration.zero);
-        await tester.tap(find.byTooltip(LocaleKeys.button_signUp.tr()));
+
+        final signUpButtonFinder = find.byTooltip(LocaleKeys.button_signUp.tr());
+        await tester.ensureVisible(signUpButtonFinder);
+        await tester.tap(signUpButtonFinder);
         await tester.pump(Duration.zero);
+
         expect(find.text(LocaleKeys.errors_formValidation_nullEmail.tr()), findsOneWidget);
         expect(find.text(LocaleKeys.errors_formValidation_nullPassword.tr()), findsOneWidget);
       });
@@ -149,14 +162,22 @@ should include two TextFormField and one Elevated Button
       await tester.runAsync(() async {
         await EasyLocalization.ensureInitialized();
         await tester.pumpWidget(createLocalizedWidgetUnderTest());
-        await tester.idle();
         await tester.pump(Duration.zero);
-        await tester.enterText(find.byTooltip(LocaleKeys.textField_email.tr()), tValidEmail);
-        await tester.enterText(find.byTooltip(LocaleKeys.textField_password.tr()), tPassword);
-        await tester.tap(find.byTooltip(LocaleKeys.button_signUp.tr()));
+
+        final emailTextFieldFinder = find.byTooltip(LocaleKeys.textField_email.tr());
+        final passwordTextFieldFinder = find.byTooltip(LocaleKeys.textField_password.tr());
+        final signUpButtonFinder = find.byTooltip(LocaleKeys.button_signUp.tr());
+        await tester.ensureVisible(emailTextFieldFinder);
+        await tester.ensureVisible(passwordTextFieldFinder);
+        await tester.ensureVisible(signUpButtonFinder);
+        await tester.enterText(emailTextFieldFinder, tValidEmail);
+        await tester.enterText(passwordTextFieldFinder, tPassword);
+        await tester.tap(signUpButtonFinder);
         await tester.pump(Duration.zero);
+
         expect(find.byType(LoadingIndicator), findsOneWidget);
         await tester.pump(Duration.zero);
+
         expect(find.text(LocaleKeys.errors_network_serverFailure.tr()), findsOneWidget);
       });
     },
@@ -176,14 +197,22 @@ should include two TextFormField and one Elevated Button
       await tester.runAsync(() async {
         await EasyLocalization.ensureInitialized();
         await tester.pumpWidget(createLocalizedWidgetUnderTest());
-        await tester.idle();
         await tester.pump(Duration.zero);
-        await tester.enterText(find.byTooltip(LocaleKeys.textField_email.tr()), tValidEmail);
-        await tester.enterText(find.byTooltip(LocaleKeys.textField_password.tr()), tPassword);
-        await tester.tap(find.byTooltip(LocaleKeys.button_signUp.tr()));
+
+        final emailTextFieldFinder = find.byTooltip(LocaleKeys.textField_email.tr());
+        final passwordTextFieldFinder = find.byTooltip(LocaleKeys.textField_password.tr());
+        final signUpButtonFinder = find.byTooltip(LocaleKeys.button_signUp.tr());
+        await tester.ensureVisible(emailTextFieldFinder);
+        await tester.ensureVisible(passwordTextFieldFinder);
+        await tester.ensureVisible(signUpButtonFinder);
+        await tester.enterText(emailTextFieldFinder, tValidEmail);
+        await tester.enterText(passwordTextFieldFinder, tPassword);
+        await tester.tap(signUpButtonFinder);
         await tester.pump(Duration.zero);
+
         expect(find.byType(LoadingIndicator), findsOneWidget);
         await tester.pump(Duration.zero);
+
         expect(find.text(LocaleKeys.errors_network_emailExists.tr()), findsOneWidget);
       });
     },

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:the_24_hour/feature/auth/presentation/view/sign_up_view.dart';
+import 'package:the_24_hour/feature/home/presentation/view/home_view.dart';
 import 'package:the_24_hour/main.dart' as app;
 import 'package:the_24_hour/product/init/language/locale_keys.g.dart';
 import 'utility/delete_account.dart' as integration_test_utility;
@@ -48,8 +49,7 @@ void main() {
 
         await tester.pumpAndSettle(const Duration(seconds: 2));
 
-        // // TODO(sametdmr): temporary expectation handle it
-        expect(find.text('LOGIN SUCCESS'), findsOneWidget);
+        expect(find.byType(HomeView), findsOneWidget);
       },
     );
   });

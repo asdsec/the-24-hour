@@ -68,7 +68,7 @@ class _SignUpViewState extends State<SignUpView> {
 
   Future<void> navigateToHome(BuildContext context, SignUpState state) async {
     if (state.status == SignUpStatus.completed) {
-      await context.router.replace(const DummyLoggedInRoute());
+      await context.router.replace(const HomeRoute());
     }
   }
 

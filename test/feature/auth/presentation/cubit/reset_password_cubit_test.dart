@@ -61,7 +61,7 @@ void main() {
         // assert later
         const expectedOrder = [
           ResetPasswordState(isLoading: true),
-          ResetPasswordState(),
+          ResetPasswordState(completed: true),
         ];
         expectLater(sut.stream, emitsInOrder(expectedOrder));
         // act

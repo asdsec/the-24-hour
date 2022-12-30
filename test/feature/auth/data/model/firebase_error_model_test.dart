@@ -5,7 +5,7 @@ import 'package:the_24_hour/feature/auth/data/model/firebase_error_model.dart';
 import 'package:the_24_hour/feature/auth/data/model/firebase_errors.dart';
 import 'package:the_24_hour/product/error/exception.dart';
 
-import '../../../fixture/fixture_reader.dart';
+import '../../../../fixture/fixture_reader.dart';
 
 void main() {
   const tError = Error(code: 400, message: FirebaseErrors.invalidPassword);

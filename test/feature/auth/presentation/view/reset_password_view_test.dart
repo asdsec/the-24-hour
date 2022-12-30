@@ -65,9 +65,16 @@ when ResetPasswordState is [ResetPasswordState.initial()]
         await EasyLocalization.ensureInitialized();
         await tester.pumpWidget(createLocalizedWidgetUnderTest());
         await tester.pump(Duration.zero);
-        expect(find.byIcon(Icons.arrow_back_ios_outlined), findsOneWidget);
-        expect(find.byType(AuthTextFormField), findsOneWidget);
-        expect(find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr()), findsOneWidget);
+
+        final backButtonFinder = find.byIcon(Icons.arrow_back_ios_outlined);
+        final emailFormFieldFinder = find.byType(AuthTextFormField);
+        final sendResetEmailButtonFinder = find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
+        await tester.ensureVisible(backButtonFinder);
+        await tester.ensureVisible(emailFormFieldFinder);
+        await tester.ensureVisible(sendResetEmailButtonFinder);
+        expect(backButtonFinder, findsOneWidget);
+        expect(emailFormFieldFinder, findsOneWidget);
+        expect(sendResetEmailButtonFinder, findsOneWidget);
       });
     },
   );
@@ -84,8 +91,12 @@ when ResetPasswordState is [ResetPasswordState.initial()]
         await tester.pumpWidget(createLocalizedWidgetUnderTest());
         await tester.pump(Duration.zero);
 
-        await tester.enterText(find.byType(AuthTextFormField), tValidEmail);
-        await tester.tap(find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr()));
+        final emailFormFieldFinder = find.byType(AuthTextFormField);
+        final sendResetEmailButtonFinder = find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
+        await tester.ensureVisible(emailFormFieldFinder);
+        await tester.ensureVisible(sendResetEmailButtonFinder);
+        await tester.enterText(emailFormFieldFinder, tValidEmail);
+        await tester.tap(sendResetEmailButtonFinder);
         await tester.pump();
 
         expect(find.byType(LoadingIndicator), findsOneWidget);
@@ -106,8 +117,12 @@ when ResetPasswordState is [ResetPasswordState.initial()]
         await tester.pumpWidget(createLocalizedWidgetUnderTest());
         await tester.pump();
 
-        await tester.enterText(find.byType(AuthTextFormField), tInvalidEmail);
-        await tester.tap(find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr()));
+        final emailFormFieldFinder = find.byType(AuthTextFormField);
+        final sendResetEmailButtonFinder = find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
+        await tester.ensureVisible(emailFormFieldFinder);
+        await tester.ensureVisible(sendResetEmailButtonFinder);
+        await tester.enterText(emailFormFieldFinder, tInvalidEmail);
+        await tester.tap(sendResetEmailButtonFinder);
         await tester.pump();
 
         expect(find.text(LocaleKeys.errors_formValidation_invalidEmail.tr()), findsOneWidget);
@@ -127,8 +142,12 @@ when ResetPasswordState is [ResetPasswordState.initial()]
         await tester.pumpWidget(createLocalizedWidgetUnderTest());
         await tester.pump();
 
-        await tester.enterText(find.byType(AuthTextFormField), tValidEmail);
-        await tester.tap(find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr()));
+        final emailFormFieldFinder = find.byType(AuthTextFormField);
+        final sendResetEmailButtonFinder = find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
+        await tester.ensureVisible(emailFormFieldFinder);
+        await tester.ensureVisible(sendResetEmailButtonFinder);
+        await tester.enterText(emailFormFieldFinder, tValidEmail);
+        await tester.tap(sendResetEmailButtonFinder);
         await tester.pump();
 
         expect(find.byType(LoadingIndicator), findsOneWidget);

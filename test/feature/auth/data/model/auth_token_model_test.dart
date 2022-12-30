@@ -5,7 +5,7 @@ import 'package:the_24_hour/feature/auth/data/model/auth_token_model.dart';
 import 'package:the_24_hour/feature/auth/domain/entity/auth_token.dart';
 import 'package:the_24_hour/product/error/exception.dart';
 
-import '../../../fixture/fixture_reader.dart';
+import '../../../../fixture/fixture_reader.dart';
 
 void main() {
   const tAuthTokenModel = AuthTokenModel(
