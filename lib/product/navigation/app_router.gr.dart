@@ -59,6 +59,12 @@ class _$AppRouter extends RootStackRouter {
         child: const SettingsView(),
       );
     },
+    ScheduleRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const ScheduleView(),
+      );
+    },
   };
 
   @override
@@ -87,6 +93,11 @@ class _$AppRouter extends RootStackRouter {
             RouteConfig(
               SettingsRoute.name,
               path: 'settings-view',
+              parent: HomeRoute.name,
+            ),
+            RouteConfig(
+              ScheduleRoute.name,
+              path: 'schedule-view',
               parent: HomeRoute.name,
             ),
           ],
@@ -181,4 +192,16 @@ class SettingsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SettingsRoute';
+}
+
+/// generated route for
+/// [ScheduleView]
+class ScheduleRoute extends PageRouteInfo<void> {
+  const ScheduleRoute()
+      : super(
+          ScheduleRoute.name,
+          path: 'schedule-view',
+        );
+
+  static const String name = 'ScheduleRoute';
 }
