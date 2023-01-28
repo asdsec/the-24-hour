@@ -40,10 +40,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData.dark().copyWith(
-        useMaterial3: true,
         colorScheme: const ColorScheme.dark().copyWith(
           primary: Colors.lime.withOpacity(.7),
-          onPrimary: Colors.white.withOpacity(.8),
           error: const Color(0xffff453a),
         ),
         inputDecorationTheme: InputDecorationTheme(
