@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:the_24_hour/env.dart';
+import 'package:the_24_hour/firebase_options.dart';
 import 'package:the_24_hour/injection.dart';
 import 'package:the_24_hour/product/enum/languages.dart';
 import 'package:the_24_hour/product/init/common/page_padding.dart';
@@ -13,6 +15,10 @@ Future<void> main() async {
 
   await Env.initiate();
 
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   await setup();
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,21 +28,19 @@ Future<void> main() async {
     EasyLocalization(
       supportedLocales: supportedLocales,
       path: langPath,
-      child: App(),
+      child: const App(),
     ),
   );
 }
 
 class App extends StatelessWidget {
-  App({super.key});
-
-  // TODO(sametdmr): wirte it in injection file
-  final _appRouter = AppRouter();
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData.dark().copyWith(
+        useMaterial3: true,
         colorScheme: const ColorScheme.dark().copyWith(
           primary: Colors.lime.withOpacity(.7),
           onPrimary: Colors.white.withOpacity(.8),
@@ -48,7 +52,7 @@ class App extends StatelessWidget {
           ),
           isDense: true,
           contentPadding: const WidgetPadding.formField(),
-          hintStyle: Theme.of(context).textTheme.subtitle2?.copyWith(
+          hintStyle: Theme.of(context).textTheme.titleSmall?.copyWith(
                 color: Theme.of(context).colorScheme.onPrimary.withOpacity(.5),
               ),
         ),
@@ -62,7 +66,10 @@ class App extends StatelessWidget {
           style: OutlinedButton.styleFrom(
             padding: const WidgetPadding.button(),
             shape: StadiumBorder(
-              side: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
+              side: BorderSide(
+                color: Theme.of(context).colorScheme.error,
+                width: 2,
+              ),
             ),
           ),
         ),
@@ -79,9 +86,9 @@ class App extends StatelessWidget {
       ),
       title: LocaleKeys.appName.tr(),
       debugShowCheckedModeBanner: false,
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      routeInformationProvider: _appRouter.routeInfoProvider(),
+      routerDelegate: sl.get<AppRouter>().delegate(),
+      routeInformationParser: sl.get<AppRouter>().defaultRouteParser(),
+      routeInformationProvider: sl.get<AppRouter>().routeInfoProvider(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

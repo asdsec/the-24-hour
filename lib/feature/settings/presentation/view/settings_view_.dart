@@ -9,7 +9,7 @@ class SettingsView extends StatelessWidget {
     return Center(
       child: Text(
         'Settings',
-        style: context.textTheme.headline4,
+        style: context.textTheme.headlineMedium,
       ),
     );
   }

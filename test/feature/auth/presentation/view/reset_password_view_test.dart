@@ -26,7 +26,9 @@ void main() {
     await di.setup();
     mockResetPassword = MockResetPassword();
     await di.sl.unregister<ResetPasswordCubit>();
-    di.sl.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit(mockResetPassword));
+    di.sl.registerFactory<ResetPasswordCubit>(
+      () => ResetPasswordCubit(mockResetPassword),
+    );
   });
 
   tearDownAll(() async {
@@ -68,7 +70,8 @@ when ResetPasswordState is [ResetPasswordState.initial()]
 
         final backButtonFinder = find.byIcon(Icons.arrow_back_ios_outlined);
         final emailFormFieldFinder = find.byType(AuthTextFormField);
-        final sendResetEmailButtonFinder = find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
+        final sendResetEmailButtonFinder =
+            find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
         await tester.ensureVisible(backButtonFinder);
         await tester.ensureVisible(emailFormFieldFinder);
         await tester.ensureVisible(sendResetEmailButtonFinder);
@@ -92,7 +95,8 @@ when ResetPasswordState is [ResetPasswordState.initial()]
         await tester.pump(Duration.zero);
 
         final emailFormFieldFinder = find.byType(AuthTextFormField);
-        final sendResetEmailButtonFinder = find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
+        final sendResetEmailButtonFinder =
+            find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
         await tester.ensureVisible(emailFormFieldFinder);
         await tester.ensureVisible(sendResetEmailButtonFinder);
         await tester.enterText(emailFormFieldFinder, tValidEmail);
@@ -103,8 +107,14 @@ when ResetPasswordState is [ResetPasswordState.initial()]
         await tester.pump();
 
         expect(find.byType(GenericDialog), findsOneWidget);
-        expect(find.text(LocaleKeys.resetPasswordView_successDialogTitle.tr()), findsOneWidget);
-        expect(find.text(LocaleKeys.resetPasswordView_successDialogContent.tr()), findsOneWidget);
+        expect(
+          find.text(LocaleKeys.resetPasswordView_successDialogTitle.tr()),
+          findsOneWidget,
+        );
+        expect(
+          find.text(LocaleKeys.resetPasswordView_successDialogContent.tr()),
+          findsOneWidget,
+        );
       });
     },
   );
@@ -118,14 +128,18 @@ when ResetPasswordState is [ResetPasswordState.initial()]
         await tester.pump();
 
         final emailFormFieldFinder = find.byType(AuthTextFormField);
-        final sendResetEmailButtonFinder = find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
+        final sendResetEmailButtonFinder =
+            find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
         await tester.ensureVisible(emailFormFieldFinder);
         await tester.ensureVisible(sendResetEmailButtonFinder);
         await tester.enterText(emailFormFieldFinder, tInvalidEmail);
         await tester.tap(sendResetEmailButtonFinder);
         await tester.pump();
 
-        expect(find.text(LocaleKeys.errors_formValidation_invalidEmail.tr()), findsOneWidget);
+        expect(
+          find.text(LocaleKeys.errors_formValidation_invalidEmail.tr()),
+          findsOneWidget,
+        );
       });
     },
   );
@@ -143,7 +157,8 @@ when ResetPasswordState is [ResetPasswordState.initial()]
         await tester.pump();
 
         final emailFormFieldFinder = find.byType(AuthTextFormField);
-        final sendResetEmailButtonFinder = find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
+        final sendResetEmailButtonFinder =
+            find.byTooltip(LocaleKeys.button_sendResetPasswordEmail.tr());
         await tester.ensureVisible(emailFormFieldFinder);
         await tester.ensureVisible(sendResetEmailButtonFinder);
         await tester.enterText(emailFormFieldFinder, tValidEmail);
@@ -153,7 +168,10 @@ when ResetPasswordState is [ResetPasswordState.initial()]
         expect(find.byType(LoadingIndicator), findsOneWidget);
         await tester.pump();
 
-        expect(find.text(LocaleKeys.errors_network_serverFailure.tr()), findsOneWidget);
+        expect(
+          find.text(LocaleKeys.errors_network_serverFailure.tr()),
+          findsOneWidget,
+        );
       });
     },
   );

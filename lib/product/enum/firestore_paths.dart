@@ -1,0 +1,4 @@
+enum FirestorePaths {
+  users,
+  tasks;
+}

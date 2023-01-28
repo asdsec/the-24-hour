@@ -9,7 +9,7 @@ class ScheduleView extends StatelessWidget {
     return Center(
       child: Text(
         'Schedule',
-        style: context.textTheme.headline4,
+        style: context.textTheme.headlineMedium,
       ),
     );
   }

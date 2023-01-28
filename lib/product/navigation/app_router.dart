@@ -4,7 +4,7 @@ import 'package:the_24_hour/feature/auth/presentation/view/login_view.dart';
 import 'package:the_24_hour/feature/auth/presentation/view/loogged_in_view.dart';
 import 'package:the_24_hour/feature/auth/presentation/view/reset_password_view.dart';
 import 'package:the_24_hour/feature/auth/presentation/view/sign_up_view.dart';
-import 'package:the_24_hour/feature/dahboard/presentation/view/dashboard_view.dart';
+import 'package:the_24_hour/feature/dashboard/presentation/view/dashboard_view.dart';
 import 'package:the_24_hour/feature/home/presentation/view/home_view.dart';
 import 'package:the_24_hour/feature/schedule/presentation/view/schedule_view.dart';
 import 'package:the_24_hour/feature/settings/presentation/view/settings_view_.dart';

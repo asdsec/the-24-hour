@@ -1,5 +1,6 @@
 // ignore_for_file: cascade_invocations
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -20,6 +21,7 @@ import 'package:the_24_hour/feature/auth/presentation/cubit/login_cubit.dart';
 import 'package:the_24_hour/feature/auth/presentation/cubit/reset_password_cubit.dart';
 import 'package:the_24_hour/feature/auth/presentation/cubit/sign_up_cubit.dart';
 import 'package:the_24_hour/product/constant/hive_constants.dart';
+import 'package:the_24_hour/product/navigation/app_router.dart';
 
 final sl = GetIt.instance;
 
@@ -78,6 +80,9 @@ Future<void> setup() async {
   Hive.registerAdapter<AuthTokenModel>(AuthTokenModelAdapter());
   await Hive.openBox<AuthTokenModel>(HiveConstants.authTokenModelKey);
 
+  sl.registerLazySingleton<AppRouter>(AppRouter.new);
+
   sl.registerLazySingleton<HiveInterface>(() => Hive);
   sl.registerLazySingleton<http.Client>(http.Client.new);
+  sl.registerLazySingleton<FirebaseFirestore>(() => FirebaseFirestore.instance);
 }

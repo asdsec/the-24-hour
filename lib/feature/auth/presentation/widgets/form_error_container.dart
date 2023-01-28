@@ -16,7 +16,7 @@ class FormErrorContainer extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             color: context.colorScheme.error.withOpacity(.5),
-            strokeAlign: StrokeAlign.outside,
+            strokeAlign: BorderSide.strokeAlignOutside,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(8),
@@ -25,7 +25,7 @@ class FormErrorContainer extends StatelessWidget {
         child: Center(
           child: Text(
             error ?? 'Unspecified Error',
-            style: context.textTheme.bodyText1?.copyWith(
+            style: context.textTheme.bodyLarge?.copyWith(
               color: context.colorScheme.onPrimary,
             ),
           ),

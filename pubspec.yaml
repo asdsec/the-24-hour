@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
+  sdk: '>=2.19.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -42,6 +42,10 @@ dependencies:
 
   # state management
   flutter_bloc: ^8.1.1
+
+  # firebase
+  firebase_core: ^2.4.1
+  cloud_firestore: ^4.3.1
 
 dev_dependencies:
   # test

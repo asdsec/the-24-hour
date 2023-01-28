@@ -9,7 +9,7 @@ class DashBoardView extends StatelessWidget {
     return Center(
       child: Text(
         'Dashboard',
-        style: context.textTheme.headline4,
+        style: context.textTheme.headlineMedium,
       ),
     );
   }

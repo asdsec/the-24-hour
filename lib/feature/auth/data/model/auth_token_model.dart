@@ -25,7 +25,7 @@ class AuthTokenModel extends AuthToken {
   /// or number string. Ex. valid values: `1.0`, `1` or `"1"`.
   ///
   /// {@template model_null_field_error}
-  /// Throws `NullFieldServerException` if the JSON has a null field.
+  /// Throws `NullFieldServerException` if there is a null field.
   /// {@endtemplate}
   factory AuthTokenModel.fromJson(Map<String, dynamic> json) {
     try {
